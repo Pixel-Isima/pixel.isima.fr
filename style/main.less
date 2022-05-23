@@ -1,0 +1,219 @@
+@scale-factor: 3;
+
+@base-image-height: 68px;
+@base-image-width: 188px;
+
+@main-background: #4d3700;
+@main-color: #e6a400;
+@text-color: white;
+@link-hover-color: #f4eed7;
+
+@font-face {
+    font-family: 'Pixel';
+    src: url('pixel.woff') format('woff'),
+         url('pixel.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    --margin: 8px;
+    --width: 780px;
+
+    scrollbar-color: @main-color black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background-color: @main-background;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+*:not(img),
+#logo img {
+    image-rendering: pixelated;
+}
+
+header, footer {
+    border-image-repeat: repeat;
+    background-color: @main-color;
+
+    font-family: 'Pixel', sans-serif;
+    font-size: @scale-factor*11px;
+    line-height: @scale-factor*15px;
+
+    color: @text-color;
+    text-shadow: @scale-factor*1px @scale-factor*1px 0 rgba(0, 0, 0, .25);
+
+    strong {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    del {
+        text-decoration: line-through;
+    }
+}
+
+header {
+    border-image-source: url('../img/header-border.png');
+    border-image-slice:  0 1 3;
+    border-image-width: 0 @scale-factor*0.33 @scale-factor;
+    border-image-outset: 0 0 @scale-factor*2px;
+    border-style: none solid solid;
+
+    margin-bottom: @scale-factor*2px;
+
+    overflow: hidden;
+
+    #logo {
+        padding: var(--margin) 0;
+        margin: auto;
+        width: var(--width);
+    
+        box-sizing: border-box;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        img {
+            height: abs(@base-image-height*@scale-factor*0.5);
+        }
+
+        #subtitle {
+            width: @scale-factor*@base-image-width*0.5;
+            font-size: @scale-factor*11px*0.5;
+            text-shadow: @scale-factor*0.5px @scale-factor*0.5px 0 rgba(0, 0, 0, .25);
+            line-height: @scale-factor*15px*0.5;
+
+            padding-top: 8px;
+
+            text-align: justify;
+
+            overflow: hidden;
+            height: 0;
+            opacity: 0;
+        }
+    }
+
+    nav {
+        width: var(--width);
+        margin: auto;
+
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            color: @text-color;
+
+            &:hover {
+                color: @link-hover-color;
+            }
+        }
+    }
+}
+
+footer {
+    border-style: solid;
+    border-image-source: url('../img/footer-border.png');
+    border-image-slice:  3 1 0;
+    border-image-width: @scale-factor @scale-factor*0.33 0;
+    border-image-outset: @scale-factor*2px 0 0;
+    border-style: solid solid none;
+
+    margin-top: @scale-factor*2px;
+
+    padding: 16px 0 8px;
+
+    & > div {
+        width: var(--width);
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns: auto 1fr;
+
+        nav {
+            grid-column: 1;
+            grid-row: 1;
+
+            display: flex;
+            flex-direction: column;
+
+            a {
+                display: block;
+                width: @scale-factor*20px;
+                height: @scale-factor*20px;
+                font-size: 0;
+                margin-right: 16px;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: @scale-factor*18px;
+
+                &#link-github {
+                    background-image: url(../img/button-github.png);
+                }
+
+                &#link-gitlab {
+                    background-image: url(../img/button-gitlab.png);
+                }
+
+                &#link-discord {
+                    background-image: url(../img/button-discord.png);
+                }
+            }
+        }
+
+        #desc {
+            grid-column: 2;
+            grid-row: 1;
+
+            margin: 0;
+            line-height: @scale-factor*20px;
+            text-align: justify;
+        }
+
+        #contact {
+            grid-column: 1/3;
+            grid-row: 2;
+
+            line-height: @scale-factor*20px;
+
+            text-decoration: none;
+            color: @text-color;
+
+
+            &::before {
+                content: '';
+
+                display: block;
+                width: @scale-factor*20px;
+                height: @scale-factor*20px;
+                margin-right: 16px;
+
+                float: left;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: @scale-factor*18px;
+                background-image: url(../img/button-mail.png);
+            }
+        }
+    }
+}
+
+#space {
+    flex: 1;
+}

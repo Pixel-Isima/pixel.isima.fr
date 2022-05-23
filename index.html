@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming soon</title>
+
+    <style>
+        @font-face {
+            font-family: 'Pixel';
+            src: url('style/pixel.woff') format('woff'),
+                url('style/pixel.woff2') format('woff2');
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            font-family: 'Pixel', sans-serif;
+
+            margin: 0;
+            background-color: #e6a400;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 44px;
+            color: white;
+            text-shadow: 4px 4px 0 rgba(0, 0, 0, .25);
+            line-height: 60px;
+            font-weight: normal;
+            margin-top: 16px;
+        }
+
+        img {
+            image-rendering: pixelated;
+            height: 130px;
+        }
+    </style>
+</head>
+<body>
+    <img src="img/logo.png" alt="Logo Pixel">
+    <h1>Coming soon...</h1>
+</body>
+</html>
